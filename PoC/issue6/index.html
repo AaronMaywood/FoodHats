@@ -1,0 +1,40 @@
+<style>
+/* 背景に1440pxを超える幅の背景を敷き、レスポンシブする */
+.bg-layer {
+	--bg-offset: -200px;				/* 背景の開始位置を左右にシフトする量 */
+	--contents-layer-width: 1440px;		/* コンテンツが流し込まれるエリアの幅 */
+	background: no-repeat url(bg.jpg);
+	background-position:
+		/* TODO 背景が1440px 以下のときにはbackground-position を固定とする */
+		/* https://coliss.com/articles/build-websites/operation/css/css-about-min-max-clamp.html */
+		max(
+			var(--bg-offset),
+			calc( (100vw - var(--contents-layer-width)) / 2 + var(--bg-offset))
+		)
+		0;
+	width: 100%;
+	height: 100%;
+}
+.contents-layer {
+	margin: 0 auto;
+	width: var(--contents-layer-width);
+}
+
+/* ↑ここまでがテンプレート */
+
+/* カスタマイズ */
+.contents-layer {
+	background: blue;
+	padding: 2rem;
+}
+</style>
+
+<body>
+	<div class="bg-layer">
+		<div class="contents-layer"> <!-- ここまでがテンプレート -->
+			<!-- カスタマイズ -->
+			<h1>背景に1440pxを超える幅の背景を敷き、レスポンシブする</h1>
+		</div>
+	</div>
+</body>
+
